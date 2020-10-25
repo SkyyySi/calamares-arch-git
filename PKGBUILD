@@ -4,10 +4,10 @@ pkgname=calamares-git
 _pkgname=calamares
 pkgver=0.1.r4.g1ca274a
 pkgrel=1
-pkgdesc='Graphical Arch Linux installer'
+pkgdesc='Distribution-Independent Installer Framework'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='https://github.com/SkyyySi/calamares-arch'
+url='https://github.com/calamares/calamares'
 provides=('calamares')
 conflicts=('calamares')
 depends=('kconfig'
@@ -48,16 +48,11 @@ build() {
 	cd ${srcdir}/calamares
 	mkdir -p build && cd build
 	cmake .. -DCMAKE_INSTALL_PREFIX=/usr
-	make -j16
+	make
 }
 
 package() {
 	cd ${srcdir}/calamares/build
 	make DESTDIR="$pkgdir" install
-	cd ..
-	install -Dm644 "settings.conf" "$pkgdir/etc/calamares/settings.conf"
-	mkdir -p "$pkgdir/etc/calamares/branding"
-	cp -r "src/branding/archlinux" "$pkgdir/etc/calamares/branding/archlinux"
-	cp -r "configs" "$pkgdir/etc/calamares/modules"
 	install -Dm644 "$srcdir/20-nopasswd-calamares.rules" "$pkgdir/etc/polkit-1/rules.d/20-nopasswd-calamares.rules"
 }
