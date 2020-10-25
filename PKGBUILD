@@ -2,11 +2,11 @@
 
 pkgname=calamares-git
 _pkgname=calamares
-pkgver=0.1.r4.g1ca274a
+pkgver=3.2.32.1.r33.gf629826d4
 pkgrel=1
 pkgdesc='Distribution-Independent Installer Framework'
 arch=('i686' 'x86_64')
-license=('GPL')
+license=('GPL3')
 url='https://github.com/calamares/calamares'
 provides=('calamares')
 conflicts=('calamares')
